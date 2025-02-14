@@ -1,5 +1,6 @@
 ## 🚀 Employee PayTrack System
-Employee PayTrack System is a Java-based payroll management application that helps organizations manage employee salary details efficiently. The system supports both full-time and part-time employees, allowing payroll tracking based on monthly salary or hourly wages.
+
+Employee PayTrack System is a Java-based console application that helps to  manage employee salary details efficiently. The system supports both full-time and part-time employees, allowing payroll tracking based on monthly salary or hourly wages.
 
 ### 🎯 Features
 
@@ -7,6 +8,7 @@ Employee PayTrack System is a Java-based payroll management application that hel
 - 💰 Calculate employee salaries automatically
 - 🗑️ Remove employees using their unique ID
 - 📋 Display employee details (Name, ID, Salary)
+- 🔄 Menu-driven interface for seamless interaction
 
 
 ### 🛠️ Technologies Used
@@ -17,37 +19,40 @@ Employee PayTrack System is a Java-based payroll management application that hel
 
 ### 📖 Usage
 
-- 🏢 Enter the number of employees.
-- 📝 Provide employee details:
-  - 🏷️ Name
-  - 🔢 ID
-  - 🏢 Employee Type (Full-Time or Part-Time)
-  - 💵 Salary Details
-- 📊 View all employees with calculated salaries.
-- ❌ Remove an employee by entering their ID.
-- 👀 View the updated employee list.
+- Run the program.
+- Choose an option from the menu:
+- 🏢 Add Employee (Full-Time or Part-Time)
+  - ✖️ Remove Employee using ID
+  - 📈 Display all Employees with calculated salaries
+  - ⏹ Exit the program
+- Follow on-screen prompts to enter employee details.
+- View and manage employees dynamically.
 
 ### 📌 Example Output
 
 ```
-Enter the number of employees: 2
+======= Employee Payment System =======
+        1. Add Employee
+        2. Remove Employee
+        3. Display All Employees
+        4. Exit
+Enter your choice: 1
 
-Enter details for Employee 1
 Enter Name: Alice
 Enter ID: 101
 Enter Employee Type (1 for Full-Time, 2 for Part-Time): 1
 Enter Monthly Salary: 50000
+Employee added successfully.
 
-Enter details for Employee 2
-Enter Name: Bob
-Enter ID: 102
-Enter Employee Type (1 for Full-Time, 2 for Part-Time): 2
-Enter Hours Worked: 20
-Enter Hourly Rate: 200
+======= Employee Payment System =======
+        1. Add Employee
+        2. Remove Employee
+        3. Display All Employees
+        4. Exit
+Enter your choice: 3
 
-All Employee Details:
-Employee [Name=Alice, Id=101, Salary=50000.0]
-Employee [Name=Bob, Id=102, Salary=4000.0]
+Employee List:
+[Employee Name = Alice, Id = 101, Salary = 50000.0]
 ```
 ---
 
