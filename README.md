@@ -22,7 +22,7 @@ Employee PayTrack System is a Java-based payroll management application that hel
   - 🏷️ Name
   - 🔢 ID
   - 🏢 Employee Type (Full-Time or Part-Time)
-- 💵 Salary Details
+  - 💵 Salary Details
 - 📊 View all employees with calculated salaries.
 - ❌ Remove an employee by entering their ID.
 - 👀 View the updated employee list.
