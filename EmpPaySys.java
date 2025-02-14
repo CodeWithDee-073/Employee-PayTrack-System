@@ -1,165 +1,152 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
-abstract class Employee { // data abstraction // Employee class
-  private String name; // Access Specifiers
+//Abstract Employee class (Abstraction)
+abstract class Employee {
+  private String name;
   private int id;
 
-  public Employee(String nm, int d) { // paramete constructor
-    this.name = nm;
-    this.id = d;
+  public Employee(String name, int id) { //Parameterized Constructor
+    this.name = name;
+    this.id = id;
   }
 
-  public String getName() { // getter method (Encapsulation)
+  public String getName() { //Getter Method(Encapsulation)
     return name;
   }
 
-  public int getId() { // getter method (Encapsulation)
+  public int getId() { //Getter Method(Encapsulation)
     return id;
   }
 
-  public abstract double calculateSalary(); // abstract method (Encapsulation)
+  public abstract double calculateSalary(); //Abstract Method(Encapsulation)
 
-  @Override // polymorphism
-  public String toString() { // display
-    return "Employee [Name=" + name + ", Id=" + id + ", Salary=" + calculateSalary() + "]";
+  @Override
+  public String toString() { //Polymorphism(Method Overriding)
+    return "[Employee Name = " + name + ", Id = " + id + ", Salary = " + calculateSalary() + "]";
   }
 }
 
-class FullTimeEmp extends Employee { // FullTimeEmp Subclass
-  private double monthlySal;
+//Full-Time Employee's Subclass
+class FullTimeEmp extends Employee {
+  private double monthlySalary;
 
-  public FullTimeEmp(String name, int id, double montthlySalary) { // constructor
-    super(name, id); // super keyword to access parent class constructor
-    this.monthlySal = montthlySalary;
+  public FullTimeEmp(String name, int id, double monthlySalary) {
+    super(name, id);
+    this.monthlySalary = monthlySalary;
   }
 
   @Override
   public double calculateSalary() {
-    return monthlySal;
-
+    return monthlySalary;
   }
 }
 
-class PartTimeEmp extends Employee { // PartTimeEmp Subclass
-  private double hourWorked;
+//Part-Time Employee's Subclass
+class PartTimeEmp extends Employee {
+  private double hoursWorked;
   private double hourlyRate;
 
-  public PartTimeEmp(String name, int id, double hourWrk, double hourlyRt) { // constructoe
+  public PartTimeEmp(String name, int id, double hoursWorked, double hourlyRate) {
     super(name, id);
-    this.hourWorked = hourWrk;
-    this.hourlyRate = hourlyRt;
+    this.hoursWorked = hoursWorked;
+    this.hourlyRate = hourlyRate;
   }
 
   @Override
   public double calculateSalary() {
-    return hourWorked * hourlyRate;
+    return hoursWorked * hourlyRate;
   }
 }
 
+//Payroll System for Managing Employees
 class PayrollSystem {
+  private ArrayList<Employee> employeeList;
 
-  // Syntax= ArrayList<Integer> arr = new ArrayList<>();
-  private ArrayList<Employee> employeeList; // Array list declaration,Here Employee is an object (collectionframework)
-
-  public PayrollSystem() { // constructor
-    employeeList = new ArrayList<>(); // Array list initialisation
+  public PayrollSystem() {
+    employeeList = new ArrayList<>();
   }
 
   public void addEmployee(Employee emp) {
-    employeeList.add(emp); // Here .add is used add value in the ArrayList(here, employeeList)
+    employeeList.add(emp);
   }
 
-  public void removeEmployee(int id) {// remove employee through his/her id
+  public void removeEmployee(int id) {
     Employee empRemove = null;
-    for (Employee index : employeeList) {// for each loop
-      if (index.getId() == id) {
-        empRemove = index;
+    for (Employee emp : employeeList) {
+      if (emp.getId() == id) {
+        empRemove = emp;
         break;
       }
     }
     if (empRemove != null) {
-      employeeList.remove(empRemove);// Here .remove is used remove value in the ArrayList(here, employeeList)
+      employeeList.remove(empRemove);
+      System.out.println("Employee with ID " + id + " removed successfully.");
     } else {
-      System.out.println("Employee does not exits");
+      System.out.println("Employee does not exist.");
     }
   }
 
-  public void displayEmployee() {// remove employee through his/her id
-    for (Employee index : employeeList) {// for each loop
-      System.out.println(index);
+  public void displayEmployees() {
+    if (employeeList.isEmpty()) {
+      System.out.println("No employees to display.");
+    } else {
+      for (Employee emp : employeeList) {
+        System.out.println(emp);
+      }
     }
   }
 }
 
+// Main Class
 public class EmpPaySys {
   public static void main(String[] args) {
     PayrollSystem PRS = new PayrollSystem();
+    Scanner sc = new Scanner(System.in);
 
-    FullTimeEmp Femp = new FullTimeEmp("Deepti", 1, 700000);
-    PartTimeEmp Pemp = new PartTimeEmp("Raj", 2, 10, 500);
+    System.out.print("Enter the number of employees: ");
+    int n = sc.nextInt();
+    sc.nextLine(); //newline
 
-    PRS.addEmployee(Femp); // adding fulltimeemployee details
-    PRS.addEmployee(Pemp); // adding parttimeemployee details
+    for (int i = 0; i < n; i++) {
+      System.out.println("\nEnter details for Employee " + (i + 1));
+      System.out.print("Enter Name: ");
+      String name = sc.nextLine();
 
-    System.out.println("\nInitial Employee Details");
-    PRS.displayEmployee();
+      System.out.print("Enter ID: ");
+      int id = sc.nextInt();
 
-    System.out.println("\nAfter Removing Employee Detail wiith,Remaining Employee are");
-    PRS.removeEmployee(1); // removing employee with id 1 (Deepti)
-    PRS.displayEmployee();
+      System.out.print("Enter Employee Type (1 for Full-Time, 2 for Part-Time): ");
+      int type = sc.nextInt();
+
+      if (type == 1) {
+        System.out.print("Enter Monthly Salary: ");
+        double monthlySalary = sc.nextDouble();
+        PRS.addEmployee(new FullTimeEmp(name, id, monthlySalary));
+      } 
+      else if (type == 2) {
+        System.out.print("Enter Hours Worked: ");
+        double hoursWorked = sc.nextDouble();
+        System.out.print("Enter Hourly Rate: ");
+        double hourlyRate = sc.nextDouble();
+        PRS.addEmployee(new PartTimeEmp(name, id, hoursWorked, hourlyRate));
+      } 
+      else {
+        System.out.println("Invalid Employee Type! Skipping entry...");
+      }
+      sc.nextLine(); //newline
+    }
+
+    System.out.println("\nAll Employee Details:");
+    PRS.displayEmployees();
+
+    System.out.print("\nEnter Employee ID to remove: ");
+    int removeId = sc.nextInt();
+    PRS.removeEmployee(removeId);
+
+    System.out.println("\nRemaining Employees:");
+    PRS.displayEmployees();
+
+    sc.close(); 
   }
 }
-
-/*
- * import java.util.Scanner;
- * 
- * public class EmpPaySys {
- * public static void main(String[] args) {
- * PayrollSystem PRS = new PayrollSystem();
- * Scanner sc = new Scanner(System.in);
- * 
- * System.out.print("Enter the number of employees: ");
- * int n = sc.nextInt();
- * sc.nextLine(); // Consume newline
- * 
- * for (int i = 0; i < n; i++) {
- * System.out.println("\nEnter details for Employee " + (i + 1));
- * System.out.print("Enter Name: ");
- * String name = sc.nextLine();
- * 
- * System.out.print("Enter ID: ");
- * int id = sc.nextInt();
- * 
- * System.out.print("Enter Employee Type (1 for Full-Time, 2 for Part-Time): ");
- * int type = sc.nextInt();
- * 
- * if (type == 1) {
- * System.out.print("Enter Monthly Salary: ");
- * double monthlySalary = sc.nextDouble();
- * PRS.addEmployee(new FullTimeEmp(name, id, monthlySalary));
- * } else if (type == 2) {
- * System.out.print("Enter Hours Worked: ");
- * int hoursWorked = sc.nextInt();
- * System.out.print("Enter Hourly Rate: ");
- * double hourlyRate = sc.nextDouble();
- * PRS.addEmployee(new PartTimeEmp(name, id, hoursWorked,
- * hourlyRate));
- * } else {
- * System.out.println("Invalid Employee Type! Skipping entry...");
- * }
- * sc.nextLine(); // Consume newline after number input
- * }
- * 
- * sc.close();
- * 
- * System.out.println("\nAll Employee Details:");
- * PRS.displayEmployee();
- * }
- * }
- * 
- */
-
-
-
-
- 
