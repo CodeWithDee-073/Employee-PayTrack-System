@@ -56,8 +56,8 @@ Employee List:
 ```
 
 ### 🎯 Future Enhancements
-🔹 Implement a graphical user interface (GUI).
-🔹 Integrate a database for persistent data storage.
+- 🔹 Implement a graphical user interface (GUI).
+- 🔹 Integrate a database for persistent data storage.
 
 ---
 Feel free to contribute to this project by submitting pull requests or reporting issues! 🚀  
