@@ -10,14 +10,13 @@ Employee PayTrack System is a Java-based console application that helps to  mana
 - 📋 Display employee details (Name, ID, Salary)
 - 🔄 Menu-driven interface for seamless interaction
 
-
 ### 🛠️ Technologies Used
 
 - 🎭 Object-Oriented Programming (Abstraction, Encapsulation, Polymorphism, and Inheritance)
 - 📚 Collection Framework (ArrayList)
 - ⌨️ Scanner Class for User Input
 
-### 🚀 Getting Started
+### 🎯 How to Use
 
 - Run the program.
 - Choose an option from the menu:
@@ -55,7 +54,16 @@ Employee List:
 [Employee Name = Alice, Id = 101, Salary = 50000.0]
 ```
 
-### 🎯 Future Enhancements
+### 🚀 Getting Started
+
+- **Clone the Repo:**
+
+```
+git clone https://github.com/CodeWithDee-073/Employee-PayTrack-System.git
+```
+
+### 🔄 Future Enhancements
+
 - Implement a graphical user interface (GUI).
 - Integrate a database for persistent data storage.
 
